@@ -25,12 +25,16 @@ video = you_tube.streams.filter(only_audio=True).first()
 destination = "./music"
 
 # Download the file to memory
+# The audio file is in mp4 format
 out_file = video.download(output_path=destination)
 
 # Save the file to the file system
+# Split the file into to parts, the filename and the extension
 file_name, file_extension = os.path.splitext(out_file)
+# Concatenate the filename with an .mp3 file extension
 new_file = file_name + '.mp3'
 
+# Rename the mp4 file to an mp3 file extension
 os.rename(out_file, new_file)
 
 print(f" {you_tube.title}  has been successfully downloaded.")
