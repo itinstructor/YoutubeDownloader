@@ -2,11 +2,12 @@
     Name: youtube_downloader_audio_cli_1.py
     Author: William A Loring
     Created: 02/02/2023
-    Purpose: Use Python pytube library to download audion from YouTube
+    Purpose: Use Python pytube library to download audio from YouTube
 """
 
 # pip install pytube
 from pytube import YouTube
+# The Python os library is used for working on the file system
 import os
 
 print(" +----------------------------------+")

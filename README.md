@@ -1,6 +1,8 @@
 # Python YouTube Downloader
 A Python project using pytube to download video or audio from YouTube.
 
+This project uses <a href="https://pytube.io/en/latest/">pytube </a>
+
 
 ## Version History
 - (02-03-23) V1 Download an mp3 audio file from a YouTube video link.
