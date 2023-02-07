@@ -22,7 +22,7 @@ you_tube = YouTube(url)
 # Extract the audio stream
 video = you_tube.streams.filter(only_audio=True).first()
 
-# Destination to save file
+# Folder to save file
 destination = "./music"
 
 # Download the file to memory
