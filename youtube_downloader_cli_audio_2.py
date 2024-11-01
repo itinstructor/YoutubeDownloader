@@ -1,13 +1,13 @@
 """
     Name: youtube_downloader_audio_cli_2.py
     Author: William A Loring
-    Created: 02/02/2023
-    Purpose: Use Python pytube library to download audion from YouTube
+    Created: 10/31/2024
+    Purpose: Use Python pytubefix library to download audion from YouTube
 """
 
-# pip install pytube
-from pytube import YouTube
-import os
+# pip install pytubefix
+from pytubefix import YouTube
+from pytubefix.cli import on_progress
 
 print(" +----------------------------------+")
 print(" |      YouTube Audio Downloader    |")
@@ -17,27 +17,17 @@ while True:
     # ----------------------- URL ------------------------------------------#
     # Get URL from user
     url = input(" Video URL: \n >> ")
-    you_tube = YouTube(url)
+    you_tube = YouTube(url, on_progress_callback=on_progress)
 
     # ----------------------- EXTRACT AUDIO --------------------------------#
     # Extract the audio stream
-    video = you_tube.streams.filter(only_audio=True).first()
+    video = you_tube.streams.get_audio_only()
 
     # Destination to save file
     destination = "./music"
 
-    # Download the file to memory
-    # The audio file is in mp4 format
-    out_file = video.download(output_path=destination)
-
-    # Save the file to the file system
-    # Split the file into to parts, the filename and the extension
-    file_name, file_extension = os.path.splitext(out_file)
-    # Concatenate the filename with an .mp3 file extension
-    new_file = file_name + '.mp3'
-
-    # Rename the mp4 file to an mp3 file extension
-    os.rename(out_file, new_file)
+    # Download the file to the file system
+    out_file = video.download(mp3=True, output_path=destination)
 
     print(f" {you_tube.title}  has been successfully downloaded.")
 
